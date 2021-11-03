@@ -139,7 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CS201_MediaLibrary_Project.cpp" />
+    <ClCompile Include="Books.cpp" />
+    <ClCompile Include="DataReader.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MediaFile.cpp" />
+    <ClCompile Include="Movies.cpp" />
+    <ClCompile Include="Songs.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Books.h" />
+    <ClInclude Include="DataReader.h" />
+    <ClInclude Include="MediaFile.h" />
+    <ClInclude Include="Movies.h" />
+    <ClInclude Include="Songs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
