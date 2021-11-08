@@ -18,6 +18,7 @@ using std::invalid_argument;
 DataReader file;
 void PrintMenu(char& option);
 void GetMenuOption(char& option);
+bool verifyOption(char& option);
 
 int main()
 {
@@ -29,6 +30,7 @@ int main()
 	{
 		file.ImportFile(v_records);
 		//This needs to be coded for all objects not just movies.
+		// Pass to the Transaction Processing for load into individual Objects
 		//movie.LoadMovies(records);
 		cout << endl;
 		do
@@ -47,22 +49,36 @@ int main()
 			{
 				//You need to be able to call a specific function in a derived class
 				// not just the main class. 
-				//movie.LoadMovies(records);
-				//change this to switch statement for option
-				if (option == 'M')
+				
+				switch (option)
 				{
-					//movie.PrintMovieList();
-					cout << endl;
-				}
-				if (option == 'S')
-				{
-					//movie.GetStarsByMovie();
-					cout << endl;
-				}
-				if (option == 'F')
-				{
-					//movie.GetMoviesByStar();
-					cout << endl;
+				case 'M':
+					cout << "Print Movie List";
+					break;
+				case 'S':
+					cout << "Print Song List";
+					break;
+				case 'F':
+					cout << "Find the Movie the Star is in";
+					break;
+				case 'B':
+					cout << "Print Book List";
+					break;
+				case 'A':
+					cout << "Print all Media";
+					break;
+				case 'G':
+					cout << "Print Stars for a Given Movie";
+					break;
+				case 'T':
+					cout << "Print Media Counts";
+					break;
+				case 'Q':
+					cout << "Quit";
+					break;
+
+				default:
+					break;
 				}
 			}
 
@@ -79,6 +95,7 @@ int main()
     
 }
 
+//utility function to check value entered by user.
 bool verifyOption(char& option)
 {
 	bool cleanOption = false;
@@ -96,6 +113,7 @@ bool verifyOption(char& option)
 	return cleanOption;
 }
 
+//utility function to output menu choices
 void PrintMenu(char& option)
 {
 	cout << setw(20);
@@ -111,6 +129,7 @@ void PrintMenu(char& option)
 
 }
 
+/// /utility function to get option from user and convert it to upper case
 void GetMenuOption(char& option)
 {
 	cout << endl << "Option: ";

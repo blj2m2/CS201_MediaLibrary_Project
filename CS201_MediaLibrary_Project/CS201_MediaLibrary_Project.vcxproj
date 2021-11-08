@@ -145,6 +145,7 @@
     <ClCompile Include="MediaFile.cpp" />
     <ClCompile Include="Movies.cpp" />
     <ClCompile Include="Songs.cpp" />
+    <ClCompile Include="TransactionProcessing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Books.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="MediaFile.h" />
     <ClInclude Include="Movies.h" />
     <ClInclude Include="Songs.h" />
+    <ClInclude Include="TransactionProcessing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
