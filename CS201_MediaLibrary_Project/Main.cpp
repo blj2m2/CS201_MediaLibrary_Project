@@ -24,11 +24,14 @@ int main()
 {
 
 	vector<vector<string>> v_records;
+	vector<vector<string>> importConfig;
 	char option = '\0';
 
 	try
 	{
 		file.ImportFile(v_records);
+		file.importFileConfig(importConfig);
+		
 		//This needs to be coded for all objects not just movies.
 		// Pass to the Transaction Processing for load into individual Objects
 		//movie.LoadMovies(records);
@@ -40,7 +43,8 @@ int main()
 			PrintMenu(option);
 			GetMenuOption(option);
 
-			if (verifyOption(option))
+			//if should happen on false condition
+			if (!verifyOption(option))
 			{
 				cout << "Please chose one of the options from the menu." << endl << endl;
 				continue;
@@ -53,28 +57,28 @@ int main()
 				switch (option)
 				{
 				case 'M':
-					cout << "Print Movie List";
+					cout << "Print Movie List" << endl << endl;
 					break;
 				case 'S':
-					cout << "Print Song List";
+					cout << "Print Song List" << endl << endl;
 					break;
 				case 'F':
-					cout << "Find the Movie the Star is in";
+					cout << "Find the Movie the Star is in" << endl << endl;
 					break;
 				case 'B':
-					cout << "Print Book List";
+					cout << "Print Book List" << endl << endl;
 					break;
 				case 'A':
-					cout << "Print all Media";
+					cout << "Print all Media" << endl << endl;
 					break;
 				case 'G':
-					cout << "Print Stars for a Given Movie";
+					cout << "Print Stars for a Given Movie" << endl << endl;
 					break;
 				case 'T':
-					cout << "Print Media Counts";
+					cout << "Print Media Counts" << endl << endl;
 					break;
 				case 'Q':
-					cout << "Quit";
+					cout << "Quit" << endl << endl;
 					break;
 
 				default:
@@ -122,7 +126,7 @@ void PrintMenu(char& option)
 	cout << "B = Print book list" << endl;
 	cout << "S = Print song list" << endl;
 	cout << "A = Print All Media" << endl;
-	cout << "S - Print stars for a given movie" << endl;
+	cout << "G - Print stars for a given movie" << endl;
 	cout << "F - Search for movies based by star" << endl;
 	cout << "T = Print Media Counts" << endl;
 	cout << "Q - End application" << endl;

@@ -1,7 +1,5 @@
-﻿  Books.cpp
-  MediaFile.cpp
-  Movies.cpp
-  Songs.cpp
+﻿  DataReader.cpp
+  Main.cpp
   TransactionProcessing.cpp
   Generating Code...
   CS201_MediaLibrary_Project.vcxproj -> E:\Development\blj2m2\CS201_MediaLibrary_Project\x64\Debug\CS201_MediaLibrary_Project.exe

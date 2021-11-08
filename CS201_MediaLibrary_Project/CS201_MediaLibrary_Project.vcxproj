@@ -116,6 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalHeaderUnitDependencies>%(AdditionalHeaderUnitDependencies)</AdditionalHeaderUnitDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -152,6 +153,7 @@
     <ClInclude Include="DataReader.h" />
     <ClInclude Include="MediaFile.h" />
     <ClInclude Include="Movies.h" />
+    <ClInclude Include="rapidxml-1.13\rapidxml.hpp" />
     <ClInclude Include="Songs.h" />
     <ClInclude Include="TransactionProcessing.h" />
   </ItemGroup>
