@@ -4,6 +4,7 @@
 #include <vector>
 #include <iomanip>
 #include "DataReader.h"
+#include "TransactionProcessing.h"
 
 
 using std::endl;
@@ -16,6 +17,7 @@ using std::runtime_error;
 using std::invalid_argument;
 
 DataReader file;
+Transaction objTransaction;
 void PrintMenu(char& option);
 void GetMenuOption(char& option);
 bool verifyOption(char& option);
@@ -31,6 +33,7 @@ int main()
 	{
 		file.ImportFile(v_records);
 		file.importFileConfig(importConfig);
+		objTransaction.ProcessFileData(v_records, importConfig);
 		
 		//This needs to be coded for all objects not just movies.
 		// Pass to the Transaction Processing for load into individual Objects

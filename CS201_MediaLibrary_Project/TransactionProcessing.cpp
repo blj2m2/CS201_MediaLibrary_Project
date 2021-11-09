@@ -1,18 +1,51 @@
-
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <iomanip>
+#include <fstream>
 #include "TransactionProcessing.h"
+#include "Book.h"
+#include "Movie.h"
+#include "Song.h"
 
-void Transaction::PrintTotals()
+Book books;
+Movie movies;
+Song songs;
+Transaction obj_transaction;
+
+//Process data from csv into the application objects
+void Transaction::ProcessFileData(vector<vector<string>> files, vector<vector<string>> config)
 {
+	for (auto& i : files)
+	{
+		if (i[0] == "M")
+		{
+			
+			
+		}
+		else if (i[0] == "B")
+		{
+
+		}
+		else if (i[0] == "S")
+		{
+
+		}
+	
+	}
+
 }
+
+
 
 int Transaction::IntValidation(string)
 {
     return 0;
 }
 
-double Transaction::DblValidation(string)
+string Transaction::StringValidation(string)
 {
-    return 0.0;
+    return "";
 }
 
 void Transaction::PrintTransactionLog(string)
@@ -35,17 +68,6 @@ void Transaction::SetTransactionDescription(string)
 {
 }
 
-void Transaction::SetAccountNum(string)
-{
-}
-
-void Transaction::SetAccountType(string)
-{
-}
-
-void Transaction::ProcessFileData(vector<vector<string>>)
-{
-}
 
 void Transaction::UpdateLog(string, string, string, string)
 {

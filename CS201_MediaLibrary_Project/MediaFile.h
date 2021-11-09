@@ -10,7 +10,7 @@ class MediaFile
 private:
 
 protected:
-	char type;
+	
 	string title;
 	int rating;
 	string genre;
@@ -19,24 +19,22 @@ protected:
 public:
 	MediaFile()
 	{
-		type = '\0';
 		title = "";
 		rating = 0;
 		genre = "";
 		yearReleased = 1200;
 	}
 
-	char GetType();
+	
 	string GetTitle();
 	int GetRating();
 	string GetGenre();
 	int GetYearReleased();
 
-	void SetType();
-	void SetTitle();
-	void SetRating();
-	void SetGenre();
-	void SetYearReleased();
+	void SetTitle(string);
+	void SetRating(int);
+	void SetGenre(string);
+	void SetYearReleased(int);
 
 	virtual void PrintMediaList(vector<MediaFile *>) const;
 

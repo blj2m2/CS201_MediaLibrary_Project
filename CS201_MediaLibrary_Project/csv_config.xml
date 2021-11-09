@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MediaLibraryData>
 	<Media media_type="Movies">
-		<Field name="Type" dataType="char"></Field>
 		<Field name="Title" dataType="string"></Field>
 		<Field name="Director" dataType="string"></Field>
 		<Field name="Rating" dataType="string"></Field>
@@ -11,7 +10,6 @@
 		<Field name="Stars" dataType="string"></Field>
 	</Media>
 	<Media media_type="Books">
-		<Field name="Type" dataType="char"></Field>
 		<Field name="Title" dataType="string"></Field>
 		<Field name="Author" dataType="string"></Field>
 		<Field name="Rating" dataType="string"></Field>
@@ -20,7 +18,6 @@
 		<Field name="YearReleased" dataType="int"></Field>
 	</Media>
 	<Media media_type="Songs">
-		<Field name="Type" dataType="char"></Field>
 		<Field name="Title" dataType="string"></Field>
 		<Field name="Artist" dataType="string"></Field>
 		<Field name="Rating" dataType="string"></Field>

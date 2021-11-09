@@ -21,13 +21,13 @@
     <ClCompile Include="MediaFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Movies.cpp">
+    <ClCompile Include="Movie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Books.cpp">
+    <ClCompile Include="Book.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Songs.cpp">
+    <ClCompile Include="Song.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DataReader.cpp">
@@ -41,13 +41,13 @@
     <ClInclude Include="MediaFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Movies.h">
+    <ClInclude Include="Movie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Books.h">
+    <ClInclude Include="Book.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Songs.h">
+    <ClInclude Include="Song.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DataReader.h">

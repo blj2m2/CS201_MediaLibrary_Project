@@ -1,48 +1,43 @@
 #include "MediaFile.h"
 
-char MediaFile::GetType()
-{
-    return 0;
-}
-
 string MediaFile::GetTitle()
 {
-    return string();
+    return title;
 }
 
 int MediaFile::GetRating()
 {
-    return 0;
+    return rating;
 }
 
 string MediaFile::GetGenre()
 {
-    return string();
+    return genre;
 }
 
 int MediaFile::GetYearReleased()
 {
-    return 0;
+    return yearReleased;
 }
 
-void MediaFile::SetType()
+void MediaFile::SetTitle(string title)
 {
+    this->title = title;
 }
 
-void MediaFile::SetTitle()
+void MediaFile::SetRating(int rating)
 {
+    this->rating = rating;
 }
 
-void MediaFile::SetRating()
+void MediaFile::SetGenre(string genre)
 {
+    this->genre = genre;
 }
 
-void MediaFile::SetGenre()
+void MediaFile::SetYearReleased(int yearReleased)
 {
-}
-
-void MediaFile::SetYearReleased()
-{
+    this->yearReleased = yearReleased;
 }
 
 void MediaFile::PrintMediaList(vector<MediaFile*>) const

@@ -22,13 +22,13 @@ private:
 	int IntValidation(string);
 
 	//validate the double value for account
-	double DblValidation(string);
+	string StringValidation(string);
 
 	//function to print error or full log
 	void PrintTransactionLog(string);
 
 public:
-	void PrintTotals();
+
 	Transaction()
 	{
 		transactionId = 0;
@@ -48,11 +48,9 @@ public:
 	void SetTransactionType(string);
 	void SetTransactionStatus(string);
 	void SetTransactionDescription(string);
-	void SetAccountNum(string);
-	void SetAccountType(string);
 
 	//Process each line individually and parse out content taking action on each line
-	void ProcessFileData(vector<vector<string>>);
+	void ProcessFileData(vector<vector<string>>, vector<vector<string>>);
 
 	//write values to the transaction log
 	void UpdateLog(string, string, string, string);
