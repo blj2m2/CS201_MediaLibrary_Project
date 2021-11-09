@@ -14,7 +14,7 @@ Song songs;
 Transaction obj_transaction;
 
 //Process data from csv into the application objects
-void Transaction::ProcessFileData(vector<vector<string>> files, vector<vector<string>> config)
+void Transaction::ProcessFileData(vector<vector<string>> files)
 {
 	for (auto& i : files)
 	{

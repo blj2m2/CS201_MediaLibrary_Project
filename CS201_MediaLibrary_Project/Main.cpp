@@ -32,8 +32,8 @@ int main()
 	try
 	{
 		file.ImportFile(v_records);
-		file.importFileConfig(importConfig);
-		objTransaction.ProcessFileData(v_records, importConfig);
+		//file.importFileConfig(importConfig);
+		objTransaction.ProcessFileData(v_records);
 		
 		//This needs to be coded for all objects not just movies.
 		// Pass to the Transaction Processing for load into individual Objects

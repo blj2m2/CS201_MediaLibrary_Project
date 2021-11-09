@@ -50,7 +50,7 @@ public:
 	void SetTransactionDescription(string);
 
 	//Process each line individually and parse out content taking action on each line
-	void ProcessFileData(vector<vector<string>>, vector<vector<string>>);
+	void ProcessFileData(vector<vector<string>>);
 
 	//write values to the transaction log
 	void UpdateLog(string, string, string, string);
