@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include "Book.h"
+#include "Movie.h"
+#include "Song.h"
 
 using namespace std;
 
@@ -12,6 +15,7 @@ private:
 	string transactionType;
 	string transactionStatus;
 	string transactionDescription;
+	string transactionRawData;
 	//Add data fields for mediaFile tracking in transaction log
 	
 
@@ -19,10 +23,10 @@ private:
 	vector<Transaction> transactions;
 	
 	//validate the integer value for content
-	int IntValidation(string);
+	bool IntValidation(string);
 
 	//validate the double value for account
-	string StringValidation(string);
+	bool StringValidation(string);
 
 	//function to print error or full log
 	void PrintTransactionLog(string);
@@ -35,14 +39,10 @@ public:
 		transactionType = "N/A";
 		transactionStatus = "Pending";
 		transactionDescription = "N/A";
+		transactionRawData = "N/A";
 	
 	}
-	Transaction(int transactionId)
-	{
-		//pass in the transactionID of the last index + 1
-		//increment transactionID with each new transaction
-		this->transactionId = transactionId + 1;
-	}
+
 
 	void SetTransactionID(vector<Transaction>& v_transaction);
 	void SetTransactionType(string);
@@ -50,7 +50,9 @@ public:
 	void SetTransactionDescription(string);
 
 	//Process each line individually and parse out content taking action on each line
-	void ProcessFileData(vector<vector<string>>);
+	void ProcessFileData(vector<vector<string>>, vector<vector<string>>, Book&, Movie&, Song&);
+
+	bool FieldValidation(string, int, string&, vector<vector<string>> config);
 
 	//write values to the transaction log
 	void UpdateLog(string, string, string, string);

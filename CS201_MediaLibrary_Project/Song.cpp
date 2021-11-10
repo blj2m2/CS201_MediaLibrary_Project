@@ -3,20 +3,22 @@
 
 string Song::GetArtist()
 {
-    return string();
+    return artist;
 }
 
 int Song::GetDuration()
 {
-    return 0;
+    return duration;
 }
 
-void Song::SetArtist()
+void Song::SetArtist(string artist)
 {
+    this->artist = artist;
 }
 
-void Song::SetDuration()
+void Song::SetDuration(int duration)
 {
+    this->duration = duration;
 }
 
 void Song::PrintMediaList(vector<MediaFile*>) const

@@ -4,6 +4,9 @@
 #include <vector>
 #include <iomanip>
 #include "DataReader.h"
+#include "Book.h"
+#include "Movie.h"
+#include "Song.h"
 #include "TransactionProcessing.h"
 
 
@@ -17,6 +20,9 @@ using std::runtime_error;
 using std::invalid_argument;
 
 DataReader file;
+Book books;
+Movie movies;
+Song songs;
 Transaction objTransaction;
 void PrintMenu(char& option);
 void GetMenuOption(char& option);
@@ -32,12 +38,8 @@ int main()
 	try
 	{
 		file.ImportFile(v_records);
-		//file.importFileConfig(importConfig);
-		objTransaction.ProcessFileData(v_records);
-		
-		//This needs to be coded for all objects not just movies.
-		// Pass to the Transaction Processing for load into individual Objects
-		//movie.LoadMovies(records);
+		file.importFileConfig(importConfig);
+		objTransaction.ProcessFileData(v_records, importConfig ,books, movies, songs);
 		cout << endl;
 		do
 		{
@@ -54,30 +56,36 @@ int main()
 			}
 			else
 			{
-				//You need to be able to call a specific function in a derived class
-				// not just the main class. 
+				//movies, books and songs shoould all be availble to call directly from main as they were passed by reference to Transaction Processing
 				
 				switch (option)
 				{
 				case 'M':
+					//Print from the movie class - function needs to be written
 					cout << "Print Movie List" << endl << endl;
 					break;
 				case 'S':
+					//Print from the song class - function needs to be written
 					cout << "Print Song List" << endl << endl;
 					break;
 				case 'F':
+					//Print from the move class - function needs to be written
 					cout << "Find the Movie the Star is in" << endl << endl;
 					break;
 				case 'B':
+					//Print from the book class - function needs to be written
 					cout << "Print Book List" << endl << endl;
 					break;
 				case 'A':
+					//Print all objects rolled up or figure out a way to print all objects from the base class.
 					cout << "Print all Media" << endl << endl;
 					break;
 				case 'G':
+					//Print from the movie class
 					cout << "Print Stars for a Given Movie" << endl << endl;
 					break;
 				case 'T':
+					//Print from the transaction process class. Log will contain all records that have been sucessfully processed
 					cout << "Print Media Counts" << endl << endl;
 					break;
 				case 'Q':
@@ -96,6 +104,10 @@ int main()
 		cout << e.what() << endl << endl;
 	}
 	catch (invalid_argument& e)
+	{
+		cout << e.what() << endl << endl;
+	}
+	catch (out_of_range& e)
 	{
 		cout << e.what() << endl << endl;
 	}

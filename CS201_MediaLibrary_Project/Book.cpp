@@ -3,20 +3,23 @@
 
 string Book::GetAuthor()
 {
-	return string();
+	return author;
 }
 
-string Book::GetPages()
+int Book::GetPages()
 {
-	return string();
+	return pages;
 }
 
-void Book::SetAuthor()
+
+void Book::SetAuthor(string author)
 {
+	this->author = author;
 }
 
-void Book::SetPages()
+void Book::SetPages(int pages)
 {
+	this->pages = pages;
 }
 
 void Book::PrintMediaList(vector<MediaFile*>) const

@@ -19,10 +19,10 @@ public:
 		pages = 0;
 	}
 	string GetAuthor();
-	string GetPages();
-	void SetAuthor();
-	void SetPages();
-	vector<Book> books;
+	int GetPages();
+	void SetAuthor(string);
+	void SetPages(int);
+	vector<Book> v_books;
 	void PrintMediaList(vector<MediaFile*>) const override;
 
 };

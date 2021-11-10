@@ -65,46 +65,45 @@ void DataReader::ImportFile(vector<vector<string>>& v_records)
 }
 
 
-//works but I would need to create generic fields in order to use this functinality. Fields used
-// during the import would be created dynamically instead of hard coded in the class. Need more time to
-// implement this functionality.
-//void DataReader::importFileConfig(vector < vector<string>>& importConfig)
-//{
-//	xml_document<> doc;
-//	xml_node<>* root_node;
-//	vector<string> fieldConfig;
-//	// Read the xml file into a vector
-//	ifstream configFile;
-//	configFile.open("csv_config.xml", ios::in);
-//	if (!configFile)
-//	{
-//		throw runtime_error("Unable to Read file, please run Import process again.");
-//	}
-//	else
-//	{
-//		vector<char> buffer((istreambuf_iterator<char>(configFile)), istreambuf_iterator<char>());
-//		buffer.push_back('\0');
-//		// Parse the buffer using the xml file parsing library into doc 
-//		doc.parse<0>(&buffer[0]);
-//		// Find our root node
-//		root_node = doc.first_node("MediaLibraryData");
-//		for (xml_node<>* media_node = root_node->first_node("Media"); media_node; media_node = media_node->next_sibling())
-//		{
-//			
-//
-//			for (xml_node<>* field_node = media_node->first_node("Field"); field_node; field_node = field_node->next_sibling())
-//			{
-//				fieldConfig.push_back(media_node->first_attribute("media_type")->value());
-//				fieldConfig.push_back(field_node->first_attribute("name")->value());
-//				fieldConfig.push_back(field_node->first_attribute("dataType")->value());
-//				importConfig.push_back(fieldConfig);
-//				fieldConfig.clear();
-//			}
-//		}
-//	}
-//
-//
-//	cout << "Configuration file loaded successfully" << endl;
-//	
-//}
+
+void DataReader::importFileConfig(vector < vector<string>>& importConfig)
+{
+	xml_document<> doc;
+	xml_node<>* root_node;
+	vector<string> fieldConfig;
+	// Read the xml file into a vector
+	ifstream configFile;
+	configFile.open("csv_config.xml", ios::in);
+	if (!configFile)
+	{
+		throw runtime_error("Unable to Read file, please run Import process again.");
+	}
+	else
+	{
+		vector<char> buffer((istreambuf_iterator<char>(configFile)), istreambuf_iterator<char>());
+		buffer.push_back('\0');
+		// Parse the buffer using the xml file parsing library into doc 
+		doc.parse<0>(&buffer[0]);
+		// Find our root node
+		root_node = doc.first_node("MediaLibraryData");
+		for (xml_node<>* media_node = root_node->first_node("Media"); media_node; media_node = media_node->next_sibling())
+		{
+			
+
+			for (xml_node<>* field_node = media_node->first_node("Field"); field_node; field_node = field_node->next_sibling())
+			{
+				fieldConfig.push_back(media_node->first_attribute("media_type")->value());
+				fieldConfig.push_back(field_node->first_attribute("id")->value());
+				fieldConfig.push_back(field_node->first_attribute("name")->value());
+				fieldConfig.push_back(field_node->first_attribute("dataType")->value());
+				importConfig.push_back(fieldConfig);
+				fieldConfig.clear();
+			}
+		}
+	}
+
+
+	cout << "Configuration file loaded successfully" << endl;
+	
+}
 

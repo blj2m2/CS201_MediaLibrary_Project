@@ -63,6 +63,6 @@ void Movie::AddMovie(string title, string director, int rating, string genre, in
     {
         obj_movie.stars.push_back(stars[j]);
     }
-    movies.push_back(obj_movie);
+    v_movies.push_back(obj_movie);
     obj_movie.stars.clear();
 }

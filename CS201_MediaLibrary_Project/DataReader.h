@@ -25,7 +25,7 @@ public:
 
 	//single function to import and store strings into a vector
 	void ImportFile(vector<vector<string>>&);
-	//void importFileConfig(vector<vector<string>>&);
+	void importFileConfig(vector<vector<string>>&);
 
 
 };

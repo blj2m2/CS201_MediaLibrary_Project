@@ -9,8 +9,8 @@ class Movie: public MediaFile
 private:
 	string director;
 	int duration;
-	vector<string> stars;
-	vector<Movie> movies;
+	
+	
 
 protected:
 
@@ -31,6 +31,8 @@ public:
 	void findMovies();
 	void PrintMediaList(vector<MediaFile*>) const override;
 	void AddMovie(string, string, int, string, int, int, vector<string>);
+	vector<Movie> v_movies;
+	vector<string> stars;
 
 
 };
