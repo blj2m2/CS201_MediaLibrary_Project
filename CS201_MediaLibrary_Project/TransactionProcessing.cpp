@@ -23,63 +23,65 @@ void Transaction::ProcessFileData(vector<vector<string>> files, vector<vector<st
 	for (auto& i : files)
 	{
 		j = 1;
-		if (i[0] == "M")
+		try
 		{
-			//push the local movie object onto the movies object passed in by reference
-			for (j = 1; j < -99; j++)
+			if (i[0] == "M")
 			{
+				//push the local movie object onto the movies object passed in by reference
+				for (j = 1; j < -99; j++)
+				{
 
-				//does error check on each field
-				if (!FieldValidation("M", j, i[j], config))
-				{
-					cout << "Field level error, write error to log";
-					continue;
-				}
-				else
-				{
-					//pushed the appropriate field into the local object
-					switch (j)
+					//does error check on each field
+					if (!FieldValidation("M", j, i[j], config))
 					{
-					case 1:
-						movie.SetTitle(i[j]);
-						break;
-					case 2:
-						movie.SetDirector(i[j]);
-						break;
-					case 3:
-						movie.SetRating(stoi(i[j]));
-						break;
-					case 4:
-						movie.SetGenre(i[j]);
-						break;
-					case 5:
-						movie.SetDuration(stoi(i[j]));
-						break;
-					case 6:
-						movie.SetYearReleased(stoi(i[j]));
-						break;
-					case 7:
-						//push stars into a separate vector
-						for (size_t s = j; s < i.size(); ++s)
-						{
-							if (i[s] != "")
-							{
-								movie.stars.push_back(i[s]);
-							}
-						}j = -99;
-						break;
-					default:
-						break;
+						throw invalid_argument("Invalid argument passed during processing.");
+						continue;
 					}
+					else
+					{
+						//pushed the appropriate field into the local object
+						switch (j)
+						{
+						case 1:
+							movie.SetTitle(i[j]);
+							break;
+						case 2:
+							movie.SetDirector(i[j]);
+							break;
+						case 3:
+							movie.SetRating(stoi(i[j]));
+							break;
+						case 4:
+							movie.SetGenre(i[j]);
+							break;
+						case 5:
+							movie.SetDuration(stoi(i[j]));
+							break;
+						case 6:
+							movie.SetYearReleased(stoi(i[j]));
+							break;
+						case 7:
+							//push stars into a separate vector
+							for (size_t s = j; s < i.size(); ++s)
+							{
+								if (i[s] != "")
+								{
+									movie.stars.push_back(i[s]);
+								}
+							}j = -99;
+							break;
+						default:
+							break;
+						}
 
+					}
 				}
-			}
-			movies.v_movies.push_back(movie);
-			movie.stars.clear();
-			
-		}
+				movies.v_movies.push_back(movie);
+				movie.stars.clear();
 
-		else if (i[0] == "B")
+			}
+
+			else if (i[0] == "B")
 			{
 				j = 1;
 				//push the local movie object onto the movies object passed in by reference
@@ -122,54 +124,89 @@ void Transaction::ProcessFileData(vector<vector<string>> files, vector<vector<st
 					}
 				}
 				books.v_books.push_back(book);
-		}
+			}
 
-			
-				else if (i[0] == "S")
+
+			else if (i[0] == "S")
+			{
+				j = 1;
+				//push the local movie object onto the movies object passed in by reference
+				for (j = 1; j < -99; j++)
 				{
-					j = 1;
-					//push the local movie object onto the movies object passed in by reference
-					for (j = 1; j < -99; j++)
+
+					//does error check on each field
+					if (!FieldValidation("S", j, i[j], config))
 					{
-
-						//does error check on each field
-						if (!FieldValidation("S", j, i[j], config))
-						{
-							cout << "Field level error, write error to log";
-							continue;
-						}
-						else
-						{
-							//pushed the appropriate field into the local object
-							switch (j)
-							{
-							case 1:
-								song.SetTitle(i[j]);
-								break;
-							case 2:
-								song.SetArtist(i[j]);
-								break;
-							case 3:
-								song.SetRating(stoi(i[j]));
-								break;
-							case 4:
-								song.SetGenre(i[j]);
-								break;
-							case 5:
-								song.SetDuration(stoi(i[j]));
-								break;
-							case 6:
-								song.SetYearReleased(stoi(i[j]));
-								break;
-							default:
-								break;
-							}
-
-						}
+						cout << "Field level error, write error to log";
+						continue;
 					}
-					songs.v_songs.push_back(song);
-				
+					else
+					{
+						//pushed the appropriate field into the local object
+						switch (j)
+						{
+						case 1:
+							song.SetTitle(i[j]);
+							break;
+						case 2:
+							song.SetArtist(i[j]);
+							break;
+						case 3:
+							song.SetRating(stoi(i[j]));
+							break;
+						case 4:
+							song.SetGenre(i[j]);
+							break;
+						case 5:
+							song.SetDuration(stoi(i[j]));
+							break;
+						case 6:
+							song.SetYearReleased(stoi(i[j]));
+							break;
+						default:
+							break;
+						}
+
+					}
+				}
+				songs.v_songs.push_back(song);
+
+			}
 		}
+		catch (invalid_argument& e)
+		{
+			if (i[0] == "B")
+			{
+				cout << book.SetTitle(i[j]) << " record processing produced error. " << e.what() << endl;
+			}
+			else if (i[0] == "M")
+			{
+				cout << movie.SetTitle(i[j]) << " record processing produced error. " << e.what() << endl;
+			}
+			else if (i[0] == "S")
+			{
+				cout << song.SetTitle(i[j]) << " record processing produced error. " << e.what() << endl;
+			}
+			
+		}
+		catch (runtime_error& e)
+		{
+			if (i[0] == "B")
+			{
+				cout << book.SetTitle(i[j]) << " record processing produced error. " << e.what() << " - Error" << endl;
+			}
+			else if (i[0] == "M")
+			{
+				cout << movie.SetTitle(i[j]) << " record processing produced error. " << e.what() << " - Error" << endl;
+			}
+			else if (i[0] == "S")
+			{
+				cout << song.SetTitle(i[j]) << " record processing produced error. " << e.what() << " - Error" << endl;
+			}
+			
+		}
+
+
 	
 	}
 	cout << "Data processed successfully into business objects." << endl << endl;
@@ -401,7 +438,6 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 			break;
 
 		default:
-			throw invalid_argument("An invalid argument was passed to the validation function");
 			break;
 		}
 
@@ -419,6 +455,7 @@ bool Transaction::IntValidation(string number)
 			i = i * 10 + (c - '0');
 		}
 		else {
+			//write error to log for that specific record - stoi error
 			return false;
 		}
 	}
@@ -439,7 +476,7 @@ bool Transaction::StringValidation(string field)
 		}
 		else
 		{
-
+			//write to the log for this specific error - string validation error
 			return false;
 		}
 	}
