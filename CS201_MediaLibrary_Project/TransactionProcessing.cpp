@@ -12,14 +12,15 @@
 Movie movie;
 Book book;
 Song song;
-using std::invalid_argument;
+Transaction l_objTransaction;
+using namespace std;
 
 
 //Process data from csv into the application objects
 void Transaction::ProcessFileData(vector<vector<string>> files, vector<vector<string>> config, Book& books, Movie& movies, Song& songs )
 {
-	int j;
-
+	int j = 0;
+	string type;
 	for (auto& i : files)
 	{
 		j = 1;
@@ -27,14 +28,14 @@ void Transaction::ProcessFileData(vector<vector<string>> files, vector<vector<st
 		{
 			if (i[0] == "M")
 			{
+				type = "Movie";
 				//push the local movie object onto the movies object passed in by reference
-				for (j = 1; j < -99; j++)
+				for (j = 1; j < 99; j++)
 				{
-
 					//does error check on each field
 					if (!FieldValidation("M", j, i[j], config))
 					{
-						throw invalid_argument("Invalid argument passed during processing.");
+						throw invalid_argument("Invalid Argument");
 						continue;
 					}
 					else
@@ -68,15 +69,18 @@ void Transaction::ProcessFileData(vector<vector<string>> files, vector<vector<st
 								{
 									movie.stars.push_back(i[s]);
 								}
-							}j = -99;
+							}
 							break;
 						default:
+							j = 99;
 							break;
 						}
-
+						
 					}
+
 				}
 				movies.v_movies.push_back(movie);
+				AddTransactionToLog(movie, type);
 				movie.stars.clear();
 
 			}
@@ -84,14 +88,15 @@ void Transaction::ProcessFileData(vector<vector<string>> files, vector<vector<st
 			else if (i[0] == "B")
 			{
 				j = 1;
+				type = "Book";
 				//push the local movie object onto the movies object passed in by reference
-				for (j = 1; j < -99; j++)
+				for (j = 1; j < 99; j++)
 				{
 
 					//does error check on each field
 					if (!FieldValidation("B", j, i[j], config))
 					{
-						cout << "Field level error, write error to log";
+						throw invalid_argument("Invalid Argument");
 						continue;
 					}
 					else
@@ -116,28 +121,32 @@ void Transaction::ProcessFileData(vector<vector<string>> files, vector<vector<st
 							break;
 						case 6:
 							book.SetYearReleased(stoi(i[j]));
+							
 							break;
 						default:
+							j = 99;
 							break;
 						}
-
+						
 					}
 				}
 				books.v_books.push_back(book);
+				AddTransactionToLog(book, type);
 			}
 
 
 			else if (i[0] == "S")
 			{
 				j = 1;
+				type = "Song";
 				//push the local movie object onto the movies object passed in by reference
-				for (j = 1; j < -99; j++)
+				for (j = 1; j < 99; j++)
 				{
 
 					//does error check on each field
 					if (!FieldValidation("S", j, i[j], config))
 					{
-						cout << "Field level error, write error to log";
+						throw invalid_argument("Invalid Argument");
 						continue;
 					}
 					else
@@ -161,15 +170,17 @@ void Transaction::ProcessFileData(vector<vector<string>> files, vector<vector<st
 							song.SetDuration(stoi(i[j]));
 							break;
 						case 6:
-							song.SetYearReleased(stoi(i[j]));
+							song.SetYearReleased(stoi(i[j]));							
 							break;
 						default:
+							j = 99;
 							break;
 						}
-
+						
 					}
 				}
 				songs.v_songs.push_back(song);
+				AddTransactionToLog(song, type);
 
 			}
 		}
@@ -177,15 +188,28 @@ void Transaction::ProcessFileData(vector<vector<string>> files, vector<vector<st
 		{
 			if (i[0] == "B")
 			{
-				cout << book.SetTitle(i[j]) << " record processing produced error. " << e.what() << endl;
+				string error;
+				error = "Book: " + i[1] + " - ";
+				error += e.what();
+			
+				AddTransactionErrorToLog(book, "Book", error);
+				//cout << book.GetTitle() << " record processing produced error. " << e.what() << endl;
 			}
 			else if (i[0] == "M")
 			{
-				cout << movie.SetTitle(i[j]) << " record processing produced error. " << e.what() << endl;
+				string error;
+				error = "Movie: " + i[1] + " - ";
+				error += e.what();
+				AddTransactionErrorToLog(movie, "Movie", error);
+				//cout << movie.GetTitle() << " record processing produced error. " << e.what() << endl;
 			}
 			else if (i[0] == "S")
 			{
-				cout << song.SetTitle(i[j]) << " record processing produced error. " << e.what() << endl;
+				string error;
+				error = "Song: " + i[1] + " - ";
+				error += e.what();
+				AddTransactionErrorToLog(song, "Song", error);
+				//cout << song.GetTitle() << " record processing produced error. " << e.what() << endl;
 			}
 			
 		}
@@ -193,24 +217,23 @@ void Transaction::ProcessFileData(vector<vector<string>> files, vector<vector<st
 		{
 			if (i[0] == "B")
 			{
-				cout << book.SetTitle(i[j]) << " record processing produced error. " << e.what() << " - Error" << endl;
+				cout << book.GetTitle() << " record processing produced error. " << e.what() << " - Error" << endl;
 			}
 			else if (i[0] == "M")
 			{
-				cout << movie.SetTitle(i[j]) << " record processing produced error. " << e.what() << " - Error" << endl;
+				cout << movie.GetTitle() << " record processing produced error. " << e.what() << " - Error" << endl;
 			}
 			else if (i[0] == "S")
 			{
-				cout << song.SetTitle(i[j]) << " record processing produced error. " << e.what() << " - Error" << endl;
+				cout << song.GetTitle() << " record processing produced error. " << e.what() << " - Error" << endl;
 			}
 			
 		}
 
-
-	
 	}
 	cout << "Data processed successfully into business objects." << endl << endl;
 }
+
 
 
 bool Transaction::FieldValidation(string type, int index, string& field, vector<vector<string>> config)
@@ -294,7 +317,6 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 			break;
 
 		default:
-			throw invalid_argument("An invalid argument was passed to the validation function");
 			break;
 		}
 	}
@@ -366,7 +388,6 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 			break;
 
 		default:
-			throw invalid_argument("An invalid argument was passed to the validation function");
 			break;
 		}
 	}
@@ -483,26 +504,6 @@ bool Transaction::StringValidation(string field)
 	return true;
 }
 
-void Transaction::PrintTransactionLog(string)
-{
-}
-
-void Transaction::SetTransactionID(vector<Transaction>& v_transaction)
-{
-	int lastIndex = v_transaction.size();
-
-
-	if (lastIndex <= 0)
-	{
-		//int ID = lastIndex + 1;
-		transactionId = 1;
-	}
-	else if (lastIndex > 0)
-	{
-		transactionId = lastIndex + 1;
-	}
-}
-
 void Transaction::SetTransactionType(string type)
 {
 	this->transactionType = type;
@@ -518,15 +519,202 @@ void Transaction::SetTransactionDescription(string description)
 	this->transactionDescription = description;
 }
 
-
 void Transaction::UpdateLog(string, string, string, string)
 {
+	//could be used for an update function
 }
 
 void Transaction::PrintTransactionSummary()
 {
+
+	cout << setw(50);
+	cout << "Transaction Listing" << endl;
+	cout << "Movies:" << endl;
+		cout << setw(15) << "Transaction ID " << setw(20) << "Transaction Type " << setw(25) << "Transaction Status " << setw(47) << "Transaction Desc. " << setw(27) << "Transaction Date/Time " << endl;
+	for (auto& i : v_transaction)
+	{
+		if (i.transactionType == "Movie" && i.transactionStatus != "Error")
+		{
+			cout << setw(14) << i.transactionId << setw(20) << i.transactionType << setw(25) << i.transactionStatus << setw(47) << i.transactionDescription << setw(27) << i.transactionDateTime << endl;
+		}
+	}
+	cout << endl;
+	cout << "Books:" << endl;
+	cout << setw(15) << "Transaction ID" << setw(20) << "Transaction Type" << setw(25)<< "Transaction Status" << setw(47) << "Transaction Desc." << setw(27) << "Transaction Date/Time" << endl;
+	for (auto& i : v_transaction)
+	{
+		if (i.transactionType == "Book" && i.transactionStatus != "Error")
+		{
+			cout << setw(14) << i.transactionId << setw(20) << i.transactionType << setw(25) << i.transactionStatus << setw(47) << i.transactionDescription << setw(27) << i.transactionDateTime << endl;
+		}
+	}
+	cout << endl;
+	cout << "Songs:" << endl;
+	cout << setw(15) << "Transaction ID" << setw(20) << "Transaction Type" << setw(25) << "Transaction Status" << setw(47) << "Transaction Desc." << setw(27) << "Transaction Date/Time" << endl;
+	for (auto& i : v_transaction)
+	{
+		if (i.transactionType == "Song" && i.transactionStatus != "Error")
+		{
+			cout << setw(14) << i.transactionId << setw(20) << i.transactionType << setw(25) << i.transactionStatus << setw(47) << i.transactionDescription << setw(27) << i.transactionDateTime << endl;
+		}
+	}
 }
 
 void Transaction::PrintErrorLog()
 {
+	
+	cout << setw(50);
+	cout << "Transaction Error Log" << endl;
+	cout << "Movies:" << endl;
+	cout << setw(15) << "Transaction ID" << setw(20) << "Transaction Type" << setw(25) << "Transaction Status" << setw(67) << "Transaction Desc." << setw(27) << "Transaction Date/Time" << endl;
+	for (auto& i : v_transaction)
+	{
+		if (i.transactionType == "Movie" && i.transactionStatus == "Error")
+		{
+			cout << setw(14) << i.transactionId << setw(20) << i.transactionType << setw(25) << i.transactionStatus << setw(67) << i.transactionDescription << setw(27) << i.transactionDateTime << endl;
+		}
+	}
+	cout << endl;
+	cout << "Books:" << endl;
+	cout << setw(15) << "Transaction ID" << setw(20) << "Transaction Type" << setw(25) << "Transaction Status" << setw(67) << "Transaction Desc." << setw(27) << "Transaction Date/Time" << endl;
+	for (auto& i : v_transaction)
+	{
+		if (i.transactionType == "Book" && i.transactionStatus == "Error")
+		{
+			cout << setw(14) << i.transactionId << setw(20) << i.transactionType << setw(25) << i.transactionStatus << setw(67) << i.transactionDescription << setw(27) << i.transactionDateTime << endl;
+		}
+	}
+	cout << endl;
+	cout << "Songs:" << endl;
+	cout << setw(15) << "Transaction ID" << setw(20) << "Transaction Type" << setw(25) << "Transaction Status" << setw(67) << "Transaction Desc." << setw(27) << "Transaction Date/Time" << endl;
+	for (auto& i : v_transaction)
+	{
+		if (i.transactionType == "Song" && i.transactionStatus == "Error")
+		{
+			cout << setw(14) << i.transactionId << setw(20) << i.transactionType << setw(25) << i.transactionStatus << setw(67) << i.transactionDescription << setw(27) << i.transactionDateTime << endl;
+		}
+	}
+
+}
+
+//overloaded Push to Error Log for Movies
+void Transaction::AddTransactionErrorToLog(Movie& movie, string type, string error)
+{
+	time_t rawtime;
+	struct tm timeinfo;
+	time(&rawtime);
+	localtime_s(&timeinfo, &rawtime);
+	string rawData;
+	movie.GetSingleRecord(rawData);
+	l_objTransaction.transactionId = v_transaction.size() + 1;
+	l_objTransaction.transactionType = type;
+	l_objTransaction.transactionStatus = "Error";
+	l_objTransaction.transactionDescription = error;
+	l_objTransaction.transactionRecord = rawData;
+	l_objTransaction.transactionDateTime = to_string(timeinfo.tm_mday) + "." + to_string(timeinfo.tm_mon)
+		+ "." + to_string(timeinfo.tm_year) + " " + to_string(timeinfo.tm_hour)
+		+ ":" + to_string(timeinfo.tm_min) + ":" + to_string(timeinfo.tm_sec);
+	v_transaction.push_back(l_objTransaction);
+}
+
+//overloaded Push to Error Log for Books
+void Transaction::AddTransactionErrorToLog(Book& book, string type, string error)
+{
+	time_t rawtime;
+	struct tm timeinfo;
+	time(&rawtime);
+	localtime_s(&timeinfo, &rawtime);
+	string rawData;
+	book.GetSingleRecord(rawData);
+	l_objTransaction.transactionId = v_transaction.size() + 1;
+	l_objTransaction.transactionType = type;
+	l_objTransaction.transactionStatus = "Error";
+	l_objTransaction.transactionDescription = error;
+	l_objTransaction.transactionRecord = rawData;
+	l_objTransaction.transactionDateTime = to_string(timeinfo.tm_mday) + "." + to_string(timeinfo.tm_mon)
+		+ "." + to_string(timeinfo.tm_year) + " " + to_string(timeinfo.tm_hour)
+		+ ":" + to_string(timeinfo.tm_min) + ":" + to_string(timeinfo.tm_sec);
+	v_transaction.push_back(l_objTransaction);
+}
+
+//overloaded Push to Error Log for Songs
+void Transaction::AddTransactionErrorToLog(Song& song, string type, string error)
+{
+	time_t rawtime;
+	struct tm timeinfo;
+	time(&rawtime);
+	localtime_s(&timeinfo, &rawtime);
+	string rawData;
+	song.GetSingleRecord(rawData);
+	l_objTransaction.transactionId = v_transaction.size() + 1;
+	l_objTransaction.transactionType = type;
+	l_objTransaction.transactionStatus = "Error";
+	l_objTransaction.transactionDescription = error;
+	l_objTransaction.transactionRecord = rawData;
+	l_objTransaction.transactionDateTime = to_string(timeinfo.tm_mday) + "." + to_string(timeinfo.tm_mon)
+		+ "." + to_string(timeinfo.tm_year) + " " + to_string(timeinfo.tm_hour)
+		+ ":" + to_string(timeinfo.tm_min) + ":" + to_string(timeinfo.tm_sec);
+	v_transaction.push_back(l_objTransaction);
+}
+
+//Overloaded function for Adding a movie to the transaction log
+void Transaction::AddTransactionToLog(Movie& movie, string type)
+{
+	time_t rawtime;
+	struct tm timeinfo;
+	time(&rawtime);
+	localtime_s(&timeinfo, &rawtime);
+	string rawData;
+	movie.GetSingleRecord(rawData);
+	l_objTransaction.transactionId = v_transaction.size()+1;
+	l_objTransaction.transactionType = type;
+	l_objTransaction.transactionStatus = "Successful";
+	l_objTransaction.transactionDescription = movie.GetTitle();
+	l_objTransaction.transactionRecord = rawData;
+	l_objTransaction.transactionDateTime = to_string(timeinfo.tm_mday) + "." + to_string(timeinfo.tm_mon)
+		+ "." + to_string(timeinfo.tm_year) + " " + to_string(timeinfo.tm_hour)
+		+ ":" + to_string(timeinfo.tm_min) + ":" + to_string(timeinfo.tm_sec);
+	v_transaction.push_back(l_objTransaction);
+}
+
+//Overloaded function for Adding a song to the transaction log
+void Transaction::AddTransactionToLog(Song& song, string type)
+{
+	time_t rawtime;
+	struct tm timeinfo;
+	time(&rawtime);
+	localtime_s(&timeinfo, &rawtime);
+	string rawData;
+	song.GetSingleRecord(rawData);
+	l_objTransaction.transactionId = v_transaction.size() + 1;
+	l_objTransaction.transactionType = type;
+	l_objTransaction.transactionStatus = "Successful";
+	l_objTransaction.transactionDescription = song.GetTitle();
+	l_objTransaction.transactionRecord = rawData;
+	l_objTransaction.transactionDateTime = to_string(timeinfo.tm_mday) + "." + to_string(timeinfo.tm_mon)
+		+ "." + to_string(timeinfo.tm_year) + " " + to_string(timeinfo.tm_hour)
+		+ ":" + to_string(timeinfo.tm_min) + ":" + to_string(timeinfo.tm_sec);
+	v_transaction.push_back(l_objTransaction);
+
+}
+
+//Overloaded function for Adding a book to the transaction log
+void Transaction::AddTransactionToLog(Book& book, string type)
+{
+	time_t rawtime;
+	struct tm timeinfo;
+	time(&rawtime);
+	localtime_s(&timeinfo, &rawtime);
+	string rawData;
+	book.GetSingleRecord(rawData);
+	l_objTransaction.transactionId = v_transaction.size() + 1;
+	l_objTransaction.transactionType = type;
+	l_objTransaction.transactionStatus = "Successful";
+	l_objTransaction.transactionDescription = book.GetTitle();
+	l_objTransaction.transactionRecord = rawData;
+	l_objTransaction.transactionDateTime = to_string(timeinfo.tm_mday) + "." + to_string(timeinfo.tm_mon)
+		+ "." + to_string(timeinfo.tm_year) + " " + to_string(timeinfo.tm_hour)
+		+ ":" + to_string(timeinfo.tm_min) + ":" + to_string(timeinfo.tm_sec);
+	v_transaction.push_back(l_objTransaction);
+
 }

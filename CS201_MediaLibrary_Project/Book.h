@@ -25,5 +25,7 @@ public:
 	vector<Book> v_books;
 	void PrintMediaList(vector<MediaFile*>) const override;
 
+	void GetSingleRecord(string&) const;
+
 };
 

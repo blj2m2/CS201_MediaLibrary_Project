@@ -7,6 +7,7 @@
 #include <algorithm>
 #include "Movie.h"
 
+
 using std::string;
 using std::vector;
 using std::cout;
@@ -14,6 +15,7 @@ using std::endl;
 using std::setw;
 using std::cin;
 using std::invalid_argument;
+using std::to_string;
 
 Movie obj_movie;
 
@@ -37,6 +39,11 @@ void Movie::SetDuration(int duration)
     this->duration = duration;
 }
 
+void Movie::SetMovieRecord(string record)
+{
+    movieRecord = record;
+}
+
 void Movie::listMovieStars()
 {
 }
@@ -47,6 +54,18 @@ void Movie::findMovies()
 
 void Movie::PrintMediaList(vector<MediaFile*>) const
 {
+}
+
+void Movie::GetSingleRecord(string& record) const
+{
+    
+    record = title + "," + director + "," + to_string(rating) + "," + genre + "," + to_string(duration) + "," + to_string(yearReleased);
+    for (size_t i = 0; i < stars.size(); i++)
+    {
+        
+        record.append (" , " + stars.at(i));
+    }
+ 
 }
 
 void Movie::AddMovie(string title, string director, int rating, string genre, int duration, int yearReleased, vector<string> stars) 

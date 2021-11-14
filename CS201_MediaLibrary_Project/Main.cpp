@@ -39,6 +39,7 @@ int main()
 	{
 		file.ImportFile(v_records);
 		file.importFileConfig(importConfig);
+		//use these objects to call functions that should be created below.
 		objTransaction.ProcessFileData(v_records, importConfig ,books, movies, songs);
 		cout << endl;
 		do
@@ -77,8 +78,12 @@ int main()
 					cout << "Print Book List" << endl << endl;
 					break;
 				case 'A':
-					//Print all objects rolled up or figure out a way to print all objects from the base class.
-					cout << "Print all Media" << endl << endl;
+					//Print all Success objects rolled up.
+					objTransaction.PrintTransactionSummary();
+					break;
+				case 'E':
+					//Print all Error objects rolled up.
+					objTransaction.PrintErrorLog();
 					break;
 				case 'G':
 					//Print from the movie class
@@ -121,7 +126,8 @@ bool verifyOption(char& option)
 	if (option != 'm' && option != 'M' && option != 's' && option != 'S' && 
 		option != 'f' && option != 'F' && option != 'q' && option != 'Q' &&
 		option != 'b' && option != 'B' && option != 'a' && option != 'A' &&
-		option != 'G' && option != 'g' && option != 't' && option != 'T')
+		option != 'G' && option != 'g' && option != 't' && option != 'T' && 
+		option != 'E' && option != 'e')
 	{
 		cleanOption = false;
 	}
@@ -135,12 +141,14 @@ bool verifyOption(char& option)
 //utility function to output menu choices
 void PrintMenu(char& option)
 {
+	cout << endl;
 	cout << setw(20);
 	cout << "MENU CHOICES" << endl;
 	cout << "M = Print movie list" << endl;
 	cout << "B = Print book list" << endl;
 	cout << "S = Print song list" << endl;
 	cout << "A = Print All Media" << endl;
+	cout << "E = Print Error Log" << endl;
 	cout << "G - Print stars for a given movie" << endl;
 	cout << "F - Search for movies based by star" << endl;
 	cout << "T = Print Media Counts" << endl;

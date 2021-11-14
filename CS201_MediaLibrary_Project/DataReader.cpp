@@ -38,7 +38,7 @@ void DataReader::OpenFile(string fileName, vector<vector<string>>& v_records)
 	cout << "Import successful" << endl;
 	v_records = records;
 
-	cout << v_records.size() << " records imported. Files still need to be processed." << endl;
+	cout << v_records.size() << " Records imported." << endl;
 	
 }
 

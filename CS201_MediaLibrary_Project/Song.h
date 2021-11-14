@@ -28,6 +28,8 @@ public:
 	vector<Song> v_songs;
 	void PrintMediaList(vector<MediaFile*>) const override;
 
+	void GetSingleRecord(string&) const;
+
 
 
 };

@@ -43,3 +43,8 @@ void MediaFile::SetYearReleased(int yearReleased)
 void MediaFile::PrintMediaList(vector<MediaFile*>) const
 {
 }
+
+string MediaFile::GetSingleRecord() const
+{
+    return string();
+}

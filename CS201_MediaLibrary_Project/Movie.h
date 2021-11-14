@@ -9,6 +9,7 @@ class Movie: public MediaFile
 private:
 	string director;
 	int duration;
+	string movieRecord;
 	
 	
 
@@ -26,10 +27,13 @@ public:
 	void SetDirector(string);
 	void SetDuration(int);
 
+	void SetMovieRecord(string record);
+
 	
 	void listMovieStars();
 	void findMovies();
 	void PrintMediaList(vector<MediaFile*>) const override;
+	void GetSingleRecord(string&) const;
 	void AddMovie(string, string, int, string, int, int, vector<string>);
 	vector<Movie> v_movies;
 	vector<string> stars;
