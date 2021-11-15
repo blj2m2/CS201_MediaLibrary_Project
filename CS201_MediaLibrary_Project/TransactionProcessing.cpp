@@ -465,6 +465,7 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 	}
 }
 
+
 //This function checks to make sure field is an integer
 bool Transaction::IntValidation(string number)
 {
@@ -718,3 +719,6 @@ void Transaction::AddTransactionToLog(Book& book, string type)
 	v_transaction.push_back(l_objTransaction);
 
 }
+
+
+

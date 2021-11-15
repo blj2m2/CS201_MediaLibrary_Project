@@ -55,6 +55,8 @@ public:
 
 	bool FieldValidation(string, int, string&, vector<vector<string>> config);
 
+
+
 	//write values to the transaction log
 	void UpdateLog(string, string, string, string);
 
@@ -76,6 +78,8 @@ public:
 	void AddTransactionToLog(Song&, string);
 
 	void AddTransactionToLog(Book&, string);
+
+
 
 
 

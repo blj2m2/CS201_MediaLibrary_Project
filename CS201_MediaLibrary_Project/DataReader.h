@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include "Book.h"
+#include "Movie.h"
+#include "Song.h"
 
 using std::vector;
 using std::string;
@@ -15,7 +18,9 @@ class DataReader
 private:
 	vector<vector<string>> records;
 	string fileName;
-	void OpenFile(string, vector<vector<string>>&);
+	string OpenFile(string, vector<vector<string>>&);
+
+
 
 public:
 	DataReader()
@@ -24,8 +29,10 @@ public:
 	}
 
 	//single function to import and store strings into a vector
+	void ImportFile(vector<vector<string>>&, string&);
 	void ImportFile(vector<vector<string>>&);
 	void importFileConfig(vector<vector<string>>&);
+	void OpenFile(string fileName, vector<vector<string>>&, int, Book&, Movie&, Song&);
 
 
 };

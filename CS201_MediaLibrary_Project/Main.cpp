@@ -23,6 +23,7 @@ DataReader file;
 Book books;
 Movie movies;
 Song songs;
+string fileName = "";
 Transaction objTransaction;
 void PrintMenu(char& option);
 void GetMenuOption(char& option);
@@ -37,7 +38,7 @@ int main()
 
 	try
 	{
-		file.ImportFile(v_records);
+		file.ImportFile(v_records,fileName);
 		file.importFileConfig(importConfig);
 		//use these objects to call functions that should be created below.
 		objTransaction.ProcessFileData(v_records, importConfig ,books, movies, songs);
@@ -58,12 +59,14 @@ int main()
 			else
 			{
 				//movies, books and songs shoould all be availble to call directly from main as they were passed by reference to Transaction Processing
-				
+				vector < vector<string>> errorRecord;
+				int transactionID = 0;
 				switch (option)
 				{
 				case 'M':
 					//Print from the movie class - function needs to be written
 					cout << "Print Movie List" << endl << endl;
+					
 					break;
 				case 'S':
 					//Print from the song class - function needs to be written
@@ -76,6 +79,10 @@ int main()
 				case 'B':
 					//Print from the book class - function needs to be written
 					cout << "Print Book List" << endl << endl;
+					for (auto& i : books.v_books)
+					{
+						
+					}
 					break;
 				case 'A':
 					//Print all Success objects rolled up.
@@ -84,6 +91,12 @@ int main()
 				case 'E':
 					//Print all Error objects rolled up.
 					objTransaction.PrintErrorLog();
+					break;
+				case 'R':
+					cout << "option R chosen" << endl;
+					cout << "Please enter the Transaction ID" << endl;
+					cin >> transactionID;
+					file.OpenFile(fileName, errorRecord,transactionID, books, movies, songs);
 					break;
 				case 'G':
 					//Print from the movie class
@@ -127,7 +140,7 @@ bool verifyOption(char& option)
 		option != 'f' && option != 'F' && option != 'q' && option != 'Q' &&
 		option != 'b' && option != 'B' && option != 'a' && option != 'A' &&
 		option != 'G' && option != 'g' && option != 't' && option != 'T' && 
-		option != 'E' && option != 'e')
+		option != 'E' && option != 'e' && option != 'r' && option != 'R')
 	{
 		cleanOption = false;
 	}
@@ -149,6 +162,7 @@ void PrintMenu(char& option)
 	cout << "S = Print song list" << endl;
 	cout << "A = Print All Media" << endl;
 	cout << "E = Print Error Log" << endl;
+	cout << "R = Reprocess error record" << endl;
 	cout << "G - Print stars for a given movie" << endl;
 	cout << "F - Search for movies based by star" << endl;
 	cout << "T = Print Media Counts" << endl;

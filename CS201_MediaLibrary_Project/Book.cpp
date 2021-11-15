@@ -3,6 +3,8 @@
 #include "Book.h"
 
 using std::to_string;
+using std::cin;
+using std::cout;
 
 
 string Book::GetAuthor()
@@ -28,6 +30,11 @@ void Book::SetPages(int pages)
 
 void Book::PrintMediaList(vector<MediaFile*>) const
 {
+	for (auto& i : v_books)
+	{
+		cout << i.author << i.genre;
+	}
+
 }
 
 void Book::GetSingleRecord(string& record) const
