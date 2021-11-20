@@ -3,7 +3,7 @@
 	<Media media_type="Movies">
 		<Field id="1" name="Title" dataType="string"></Field>
 		<Field id="2" name="Director" dataType="string"></Field>
-		<Field id="3" name="Rating" dataType="string"></Field>
+		<Field id="3" name="Rating" dataType="int"></Field>
 		<Field id="4" name="Genre" dataType="string"></Field>
 		<Field id="5" name="Duration" dataType="int"></Field>
 		<Field id="6" name="YearReleased" dataType="int"></Field>
@@ -12,7 +12,7 @@
 	<Media media_type="Books">
 		<Field id="1" name="Title" dataType="string"></Field>
 		<Field id="2" name="Author" dataType="string"></Field>
-		<Field id="3" name="Rating" dataType="string"></Field>
+		<Field id="3" name="Rating" dataType="int"></Field>
 		<Field id="4" name="Genre" dataType="string"></Field>
 		<Field id="5" name="Pages" dataType="int"></Field>
 		<Field id="6" name="YearReleased" dataType="int"></Field>
@@ -20,7 +20,7 @@
 	<Media media_type="Songs">
 		<Field id="1" name="Title" dataType="string"></Field>
 		<Field id="2" name="Artist" dataType="string"></Field>
-		<Field id="3" name="Rating" dataType="string"></Field>
+		<Field id="3" name="Rating" dataType="int"></Field>
 		<Field id="4" name="Genre" dataType="string"></Field>
 		<Field id="5" name="Duration" dataType="int"></Field>
 		<Field id="6" name="YearReleased" dataType="int"></Field>

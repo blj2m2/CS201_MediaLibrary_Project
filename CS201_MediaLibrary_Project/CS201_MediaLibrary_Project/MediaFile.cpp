@@ -40,9 +40,9 @@ void MediaFile::SetYearReleased(int yearReleased)
     this->yearReleased = yearReleased;
 }
 
-void MediaFile::PrintMediaList(vector<MediaFile*>) const
-{
-}
+//void MediaFile::PrintMediaList(vector<MediaFile*>) const
+//{
+//}
 
 string MediaFile::GetSingleRecord() const
 {

@@ -23,7 +23,7 @@ public:
 	void SetAuthor(string);
 	void SetPages(int);
 	vector<Book> v_books;
-	void PrintMediaList(vector<MediaFile*>) const override;
+	void PrintMediaList();
 
 	void GetSingleRecord(string&) const;
 

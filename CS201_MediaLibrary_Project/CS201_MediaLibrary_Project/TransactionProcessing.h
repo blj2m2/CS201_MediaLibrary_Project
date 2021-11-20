@@ -12,7 +12,7 @@ using namespace std;
 class Transaction
 {
 private:
-	int transactionId;
+	size_t transactionId;
 	string transactionType;
 	string transactionStatus;
 	string transactionDescription;

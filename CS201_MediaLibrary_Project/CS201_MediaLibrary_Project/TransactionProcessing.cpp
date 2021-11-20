@@ -258,7 +258,7 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 			}
 			break;
 		case 2:
-			if (config[0][3] == "string")
+			if (config[1][3] == "string")
 			{
 				return StringValidation(field);
 			}
@@ -268,18 +268,23 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 			}
 			break;
 		case 3:
-			if (config[0][3] == "int")
+			if (config[2][3] == "int")
 			{
-				return StringValidation(field);
+				
+				
+				
+				return IntValidation(field);
 			}
 			else
 			{
-				return IntValidation(field);
+				return StringValidation(field);
 			}
 			break;
 		case 4:
-			if (config[0][3] == "string")
+			if (config[3][3] == "string")
 			{
+				
+				
 				return StringValidation(field);
 			}
 			else
@@ -288,27 +293,29 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 			}
 			break;
 		case 5:
-			if (config[0][3] == "int")
+			if (config[4][3] == "int")
 			{
-				return StringValidation(field);
+				
+				return IntValidation(field);
 			}
 			else
 			{
-				return IntValidation(field);
+				return StringValidation(field);
 			}
 			break;
 		case 6:
-			if (config[0][3] == "int")
+			if (config[5][3] == "int")
 			{
-				return StringValidation(field);
+				
+				return IntValidation(field);
 			}
 			else
 			{
-				return IntValidation(field);
+				return StringValidation(field);
 			}
 			break;
 		case 7:
-			if (config[0][3] == "string")
+			if (config[6][3] == "string")
 			{
 				return StringValidation(field);
 			}
@@ -329,7 +336,7 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 			//case is index in config file
 		case 1:
 
-			if (config[0][3] == "string")
+			if (config[7][3] == "string")
 			{
 				return StringValidation(field);
 			}
@@ -339,7 +346,7 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 			}
 			break;
 		case 2:
-			if (config[0][3] == "string")
+			if (config[8][3] == "string")
 			{
 				return StringValidation(field);
 			}
@@ -349,17 +356,18 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 			}
 			break;
 		case 3:
-			if (config[0][3] == "int")
+			if (config[9][3] == "int")
 			{
-				return StringValidation(field);
+			
+				return IntValidation(field);
 			}
 			else
 			{
-				return IntValidation(field);
+				return StringValidation(field);
 			}
 			break;
 		case 4:
-			if (config[0][3] == "string")
+			if (config[10][3] == "string")
 			{
 				return StringValidation(field);
 			}
@@ -369,23 +377,25 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 			}
 			break;
 		case 5:
-			if (config[0][3] == "int")
+			if (config[11][3] == "int")
 			{
-				return StringValidation(field);
+				
+				return IntValidation(field);
 			}
 			else
 			{
-				return IntValidation(field);
+				return StringValidation(field);
 			}
 			break;
 		case 6:
-			if (config[0][3] == "int")
+			if (config[12][3] == "int")
 			{
-				return StringValidation(field);
+				
+				return IntValidation(field);
 			}
 			else
 			{
-				return IntValidation(field);
+				return StringValidation(field);
 			}
 			break;
 
@@ -400,7 +410,7 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 			//case is index in config file
 		case 1:
 
-			if (config[0][3] == "string")
+			if (config[13][3] == "string")
 			{
 				return StringValidation(field);
 			}
@@ -410,7 +420,7 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 			}
 			break;
 		case 2:
-			if (config[0][3] == "string")
+			if (config[14][3] == "string")
 			{
 				return StringValidation(field);
 			}
@@ -420,17 +430,20 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 			}
 			break;
 		case 3:
-			if (config[0][3] == "int")
+			if (config[15][3] == "int")
 			{
-				return StringValidation(field);
+				
+				
+				
+				return IntValidation(field);
 			}
 			else
 			{
-				return IntValidation(field);
+				return StringValidation(field);
 			}
 			break;
 		case 4:
-			if (config[0][3] == "string")
+			if (config[16][3] == "string")
 			{
 				return StringValidation(field);
 			}
@@ -440,23 +453,25 @@ bool Transaction::FieldValidation(string type, int index, string& field, vector<
 			}
 			break;
 		case 5:
-			if (config[0][3] == "int")
+			if (config[17][3] == "int")
 			{
-				return StringValidation(field);
+			
+				return IntValidation(field);
 			}
 			else
 			{
-				return IntValidation(field);
+				return StringValidation(field);
 			}
 			break;
 		case 6:
-			if (config[0][3] == "int")
+			if (config[18][3] == "int")
 			{
-				return StringValidation(field);
+				
+				return IntValidation(field);
 			}
 			else
 			{
-				return IntValidation(field);
+				return StringValidation(field);
 			}
 			break;
 

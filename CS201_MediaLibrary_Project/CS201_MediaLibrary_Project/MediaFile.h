@@ -36,7 +36,7 @@ public:
 	void SetGenre(string);
 	void SetYearReleased(int);
 
-	virtual void PrintMediaList(vector<MediaFile *>) const;
+	//virtual void PrintMediaList(vector<MediaFile *>) const;
 	virtual string GetSingleRecord() const;
 
 

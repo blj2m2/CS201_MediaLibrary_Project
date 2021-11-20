@@ -25,7 +25,7 @@ void Song::SetDuration(int duration)
     this->duration = duration;
 }
 
-void Song::PrintMediaList(vector<MediaFile*>) const
+void Song::PrintMediaList()
 {
 }
 

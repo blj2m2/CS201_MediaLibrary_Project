@@ -66,20 +66,20 @@ int main()
 				case 'M':
 					//Print from the movie class - function needs to be written
 					cout << "Print Movie List" << endl << endl;
-					
+					movies.PrintMediaList();
 					break;
 				case 'S':
 					//Print from the song class - function needs to be written
 					cout << "Print Song List" << endl << endl;
+					songs.PrintMediaList();
 					break;
 				case 'F':
 					//Print from the move class - function needs to be written
 					cout << "Find the Movie the Star is in" << endl << endl;
+					movies.findMovies();
 					break;
 				case 'B':
-					//Print from the book class - function needs to be written
-					cout << "Print Book List" << endl << endl;
-
+					books.PrintMediaList();
 					break;
 				case 'A':
 					//Print all Success objects rolled up.
@@ -98,6 +98,7 @@ int main()
 				case 'G':
 					//Print from the movie class
 					cout << "Print Stars for a Given Movie" << endl << endl;
+					movies.listMovieStars();
 					break;
 				case 'T':
 					//Print from the transaction process class. Log will contain all records that have been sucessfully processed
@@ -126,7 +127,7 @@ int main()
 	{
 		cout << e.what() << endl << endl;
 	}
-    
+	
 }
 
 //utility function to check value entered by user.

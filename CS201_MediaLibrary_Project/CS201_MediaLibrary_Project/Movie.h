@@ -32,7 +32,7 @@ public:
 	
 	void listMovieStars();
 	void findMovies();
-	void PrintMediaList(vector<MediaFile*>) const override;
+	void PrintMediaList();
 	void GetSingleRecord(string&) const;
 	void AddMovie(string, string, int, string, int, int, vector<string>);
 	vector<Movie> v_movies;

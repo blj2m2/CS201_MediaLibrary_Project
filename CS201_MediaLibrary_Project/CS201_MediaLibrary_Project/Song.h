@@ -26,7 +26,7 @@ public:
 	void SetArtist(string);
 	void SetDuration(int);
 	vector<Song> v_songs;
-	void PrintMediaList(vector<MediaFile*>) const override;
+	void PrintMediaList();
 
 	void GetSingleRecord(string&) const;
 

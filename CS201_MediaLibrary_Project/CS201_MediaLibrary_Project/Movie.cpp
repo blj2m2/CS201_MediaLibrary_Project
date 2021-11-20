@@ -52,7 +52,7 @@ void Movie::findMovies()
 {
 }
 
-void Movie::PrintMediaList(vector<MediaFile*>) const
+void Movie::PrintMediaList()
 {
 }
 
