@@ -1,0 +1,9 @@
+﻿  TransactionProcessing.cpp
+D:\Repos\CS201_MediaLibrary_Project\CS201_MediaLibrary_Project\TransactionProcessing.cpp(612): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Repos\CS201_MediaLibrary_Project\CS201_MediaLibrary_Project\TransactionProcessing.cpp(631): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Repos\CS201_MediaLibrary_Project\CS201_MediaLibrary_Project\TransactionProcessing.cpp(651): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Repos\CS201_MediaLibrary_Project\CS201_MediaLibrary_Project\TransactionProcessing.cpp(670): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Repos\CS201_MediaLibrary_Project\CS201_MediaLibrary_Project\TransactionProcessing.cpp(689): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Repos\CS201_MediaLibrary_Project\CS201_MediaLibrary_Project\TransactionProcessing.cpp(709): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\Repos\CS201_MediaLibrary_Project\CS201_MediaLibrary_Project\TransactionProcessing.cpp(468): warning C4715: 'Transaction::FieldValidation': not all control paths return a value
+  CS201_MediaLibrary_Project.vcxproj -> D:\Repos\CS201_MediaLibrary_Project\x64\Debug\CS201_MediaLibrary_Project.exe
