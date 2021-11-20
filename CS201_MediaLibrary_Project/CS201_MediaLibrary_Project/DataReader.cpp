@@ -21,7 +21,7 @@ string DataReader::OpenFile(string fileName, vector<vector<string>>& v_records)
 	inSS.open(fileName, ios::in);
 	if (!inSS)
 	{
-		throw runtime_error("Unable to Read file, please run Import process again.");
+		throw runtime_error("Unable to Read file, please run import process again.");
 	}
 	vector<string> row;
 	string line, field;
@@ -45,7 +45,7 @@ string DataReader::OpenFile(string fileName, vector<vector<string>>& v_records)
 	return fileName;
 	
 }
-void DataReader::OpenFile(string fileName,vector<vector<string>>& v_records, int transactionID, Book& book, Movie& movie, Song& song)
+void DataReader::OpenFile(string fileName,vector<vector<string>> v_records, int transactionID, Book& book, Movie& movie, Song& song)
 {
 	ifstream inSS;
 	int count= 0;
@@ -77,7 +77,7 @@ void DataReader::OpenFile(string fileName,vector<vector<string>>& v_records, int
 	}inSS.close();
 	
 
-	cout << "Import successful" << endl;
+	cout << "Reprocess Import successful" << endl;
 	v_records = records;
 
 	cout << v_records.size() << " Records Total." << endl;

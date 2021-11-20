@@ -509,7 +509,7 @@ bool Transaction::StringValidation(string field)
 	for (size_t i = 0; i < field.size(); i++)
 	{
 		//39 = ' 47 = / 46 = .
-		if (isalpha(field.at(i)) || isspace(field.at(i)) || field.at(i) == 39 || field.at(i) == 47 || field.at(i) == 46)
+		if (isalpha(field.at(i)) || isspace(field.at(i)) || field.at(i) == 39 || field.at(i) == 47 || field.at(i) == 46 || field.at(i) == 38 || field.at(i))
 		{
 			continue;
 		}

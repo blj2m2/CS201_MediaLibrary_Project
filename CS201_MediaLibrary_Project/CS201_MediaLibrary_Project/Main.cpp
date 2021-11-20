@@ -89,12 +89,12 @@ int main()
 					//Print all Error objects rolled up.
 					objTransaction.PrintErrorLog();
 					break;
-				case 'R':
-					cout << "option R chosen" << endl;
-					cout << "Please enter the Transaction ID" << endl;
-					cin >> transactionID;
-					file.OpenFile(fileName, errorRecord,transactionID, books, movies, songs);
-					break;
+				//case 'R':
+				//	cout << "option R chosen" << endl;
+				//	cout << "Please enter the Transaction ID" << endl;
+				//	cin >> transactionID;
+				//	//file.OpenFile(fileName, errorRecord,transactionID, books, movies, songs);
+				//	break;
 				case 'G':
 					//Print from the movie class
 					cout << "Print Stars for a Given Movie" << endl << endl;
@@ -160,7 +160,7 @@ void PrintMenu(char& option)
 	cout << "S = Print song list" << endl;
 	cout << "A = Print All Media" << endl;
 	cout << "E = Print Error Log" << endl;
-	cout << "R = Reprocess error record" << endl;
+	//cout << "R = Reprocess error record" << endl;
 	cout << "G - Print stars for a given movie" << endl;
 	cout << "F - Search for movies based by star" << endl;
 	cout << "T = Print Media Counts" << endl;

@@ -18,9 +18,7 @@ class DataReader
 private:
 	vector<vector<string>> records;
 	string fileName;
-	string OpenFile(string, vector<vector<string>>&);
-
-
+	
 
 public:
 	DataReader()
@@ -32,7 +30,8 @@ public:
 	void ImportFile(vector<vector<string>>&, string&);
 	void ImportFile(vector<vector<string>>&);
 	void importFileConfig(vector<vector<string>>&);
-	void OpenFile(string fileName, vector<vector<string>>&, int, Book&, Movie&, Song&);
+	void OpenFile(string fileName, vector<vector<string>> v_records, int transactionID, Book& book, Movie& movie, Song& song);
+	string OpenFile(string fileName, vector<vector<string>>& v_records);
 
 
 };

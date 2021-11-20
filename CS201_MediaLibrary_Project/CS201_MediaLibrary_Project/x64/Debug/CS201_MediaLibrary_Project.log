@@ -1,3 +1,2 @@
-﻿  TransactionProcessing.cpp
-D:\Repos\CS201_MediaLibrary_Project\CS201_MediaLibrary_Project\TransactionProcessing.cpp(483): warning C4715: 'Transaction::FieldValidation': not all control paths return a value
+﻿  Main.cpp
   CS201_MediaLibrary_Project.vcxproj -> D:\Repos\CS201_MediaLibrary_Project\x64\Debug\CS201_MediaLibrary_Project.exe
