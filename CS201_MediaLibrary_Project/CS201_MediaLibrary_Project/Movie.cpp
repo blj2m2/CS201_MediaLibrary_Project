@@ -54,6 +54,18 @@ void Movie::findMovies()
 
 void Movie::PrintMediaList()
 {
+
+    cout << "Movie Listing" << endl;
+    //Title - Author - Rating - Genre - Pages - Year Released
+
+    for (auto& i : v_movies)
+    {
+        cout << i.title << i.director << endl;
+            for (size_t j = 0; j < i.stars.size(); j++)
+            {
+                cout << i.stars.at(j);
+            }
+    }
 }
 
 void Movie::GetSingleRecord(string& record) const

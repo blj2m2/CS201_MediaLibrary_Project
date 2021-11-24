@@ -36,7 +36,7 @@ void Book::PrintMediaList()
 
 	for (auto& i : v_books)
 	{
-		cout << i.author << i.genre;
+		cout << i.author << i.genre << endl;
 	}
 	/*cout << setw(15) << "Transaction ID" << setw(20) << "Transaction Type" << setw(25) << "Transaction Status" << setw(47) << "Transaction Desc." << setw(27) << "Transaction Date/Time" << endl;
 	for (auto& i : v_transaction)
