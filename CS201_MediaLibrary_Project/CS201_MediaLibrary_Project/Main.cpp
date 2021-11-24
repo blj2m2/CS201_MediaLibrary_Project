@@ -89,12 +89,7 @@ int main()
 					//Print all Error objects rolled up.
 					objTransaction.PrintErrorLog();
 					break;
-				//case 'R':
-				//	cout << "option R chosen" << endl;
-				//	cout << "Please enter the Transaction ID" << endl;
-				//	cin >> transactionID;
-				//	//file.OpenFile(fileName, errorRecord,transactionID, books, movies, songs);
-				//	break;
+
 				case 'G':
 					//Print from the movie class
 					cout << "Print Stars for a Given Movie" << endl << endl;
@@ -102,7 +97,12 @@ int main()
 					break;
 				case 'T':
 					//Print from the transaction process class. Log will contain all records that have been sucessfully processed
-					cout << "Print Media Counts" << endl << endl;
+					
+					cout << "Total Count:" << endl;
+					cout << setw(10) << "Movies:" << setw(10) << movies.v_movies.size() << endl;
+					cout << setw(10) << "Books: " << setw(10) <<  books.v_books.size() << endl;
+					cout << setw(10) << "Songs: " << setw(10) <<  songs.v_songs.size() << endl;
+					
 					break;
 				case 'Q':
 					cout << "Quit" << endl << endl;
